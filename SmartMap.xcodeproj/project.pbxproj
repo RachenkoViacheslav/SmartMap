@@ -1,0 +1,528 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		840AB99D1A970CC000EB3D9D /* VRBookmarkDetail.m in Sources */ = {isa = PBXBuildFile; fileRef = 840AB99C1A970CC000EB3D9D /* VRBookmarkDetail.m */; };
+		84A42DF91A93D506005B3447 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84A42DF81A93D506005B3447 /* Foundation.framework */; };
+		84A42DFB1A93D506005B3447 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84A42DFA1A93D506005B3447 /* CoreGraphics.framework */; };
+		84A42DFD1A93D506005B3447 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84A42DFC1A93D506005B3447 /* UIKit.framework */; };
+		84A42DFF1A93D506005B3447 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84A42DFE1A93D506005B3447 /* CoreData.framework */; };
+		84A42E051A93D506005B3447 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 84A42E031A93D506005B3447 /* InfoPlist.strings */; };
+		84A42E071A93D506005B3447 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 84A42E061A93D506005B3447 /* main.m */; };
+		84A42E0B1A93D506005B3447 /* VRAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 84A42E0A1A93D506005B3447 /* VRAppDelegate.m */; };
+		84A42E0E1A93D506005B3447 /* SmartMap.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 84A42E0C1A93D506005B3447 /* SmartMap.xcdatamodeld */; };
+		84A42E101A93D506005B3447 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 84A42E0F1A93D506005B3447 /* Images.xcassets */; };
+		84A42E171A93D506005B3447 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84A42E161A93D506005B3447 /* XCTest.framework */; };
+		84A42E181A93D506005B3447 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84A42DF81A93D506005B3447 /* Foundation.framework */; };
+		84A42E191A93D506005B3447 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84A42DFC1A93D506005B3447 /* UIKit.framework */; };
+		84A42E1A1A93D506005B3447 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84A42DFE1A93D506005B3447 /* CoreData.framework */; };
+		84A42E221A93D506005B3447 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 84A42E201A93D506005B3447 /* InfoPlist.strings */; };
+		84A42E241A93D506005B3447 /* SmartMapTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 84A42E231A93D506005B3447 /* SmartMapTests.m */; };
+		84A42E2E1A93D52A005B3447 /* Storyboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84A42E2D1A93D52A005B3447 /* Storyboard.storyboard */; };
+		84A42E311A93D5C5005B3447 /* VRRootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84A42E301A93D5C5005B3447 /* VRRootViewController.m */; };
+		84A42E331A93D6E4005B3447 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84A42E321A93D6E4005B3447 /* MapKit.framework */; };
+		84A42E361A93DD50005B3447 /* VRAnnotationMap.m in Sources */ = {isa = PBXBuildFile; fileRef = 84A42E351A93DD50005B3447 /* VRAnnotationMap.m */; };
+		84A42E391A93F4E7005B3447 /* VRBookmarkList.m in Sources */ = {isa = PBXBuildFile; fileRef = 84A42E381A93F4E7005B3447 /* VRBookmarkList.m */; };
+		84A4C1FF1A9B159100ED2022 /* UIView+MKAnnotationView.m in Sources */ = {isa = PBXBuildFile; fileRef = 84A4C1FE1A9B159100ED2022 /* UIView+MKAnnotationView.m */; };
+		84A59B021A94A45000BFBF48 /* BookmarkListEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 84A59B011A94A45000BFBF48 /* BookmarkListEntity.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		84A42E1B1A93D506005B3447 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 84A42DED1A93D506005B3447 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 84A42DF41A93D506005B3447;
+			remoteInfo = SmartMap;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		840AB99B1A970CC000EB3D9D /* VRBookmarkDetail.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VRBookmarkDetail.h; sourceTree = "<group>"; };
+		840AB99C1A970CC000EB3D9D /* VRBookmarkDetail.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VRBookmarkDetail.m; sourceTree = "<group>"; };
+		84A42DF51A93D506005B3447 /* SmartMap.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SmartMap.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		84A42DF81A93D506005B3447 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		84A42DFA1A93D506005B3447 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		84A42DFC1A93D506005B3447 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		84A42DFE1A93D506005B3447 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		84A42E021A93D506005B3447 /* SmartMap-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "SmartMap-Info.plist"; sourceTree = "<group>"; };
+		84A42E041A93D506005B3447 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		84A42E061A93D506005B3447 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		84A42E081A93D506005B3447 /* SmartMap-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SmartMap-Prefix.pch"; sourceTree = "<group>"; };
+		84A42E091A93D506005B3447 /* VRAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VRAppDelegate.h; sourceTree = "<group>"; };
+		84A42E0A1A93D506005B3447 /* VRAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VRAppDelegate.m; sourceTree = "<group>"; };
+		84A42E0D1A93D506005B3447 /* SmartMap.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = SmartMap.xcdatamodel; sourceTree = "<group>"; };
+		84A42E0F1A93D506005B3447 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		84A42E151A93D506005B3447 /* SmartMapTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SmartMapTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		84A42E161A93D506005B3447 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
+		84A42E1F1A93D506005B3447 /* SmartMapTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "SmartMapTests-Info.plist"; sourceTree = "<group>"; };
+		84A42E211A93D506005B3447 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		84A42E231A93D506005B3447 /* SmartMapTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SmartMapTests.m; sourceTree = "<group>"; };
+		84A42E2D1A93D52A005B3447 /* Storyboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Storyboard.storyboard; sourceTree = "<group>"; };
+		84A42E2F1A93D5C5005B3447 /* VRRootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VRRootViewController.h; sourceTree = "<group>"; };
+		84A42E301A93D5C5005B3447 /* VRRootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VRRootViewController.m; sourceTree = "<group>"; };
+		84A42E321A93D6E4005B3447 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		84A42E341A93DD50005B3447 /* VRAnnotationMap.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VRAnnotationMap.h; sourceTree = "<group>"; };
+		84A42E351A93DD50005B3447 /* VRAnnotationMap.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VRAnnotationMap.m; sourceTree = "<group>"; };
+		84A42E371A93F4E7005B3447 /* VRBookmarkList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VRBookmarkList.h; sourceTree = "<group>"; };
+		84A42E381A93F4E7005B3447 /* VRBookmarkList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VRBookmarkList.m; sourceTree = "<group>"; };
+		84A4C1FD1A9B159100ED2022 /* UIView+MKAnnotationView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+MKAnnotationView.h"; sourceTree = "<group>"; };
+		84A4C1FE1A9B159100ED2022 /* UIView+MKAnnotationView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+MKAnnotationView.m"; sourceTree = "<group>"; };
+		84A59B001A94A45000BFBF48 /* BookmarkListEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BookmarkListEntity.h; sourceTree = "<group>"; };
+		84A59B011A94A45000BFBF48 /* BookmarkListEntity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BookmarkListEntity.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		84A42DF21A93D506005B3447 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				84A42E331A93D6E4005B3447 /* MapKit.framework in Frameworks */,
+				84A42DFB1A93D506005B3447 /* CoreGraphics.framework in Frameworks */,
+				84A42DFF1A93D506005B3447 /* CoreData.framework in Frameworks */,
+				84A42DFD1A93D506005B3447 /* UIKit.framework in Frameworks */,
+				84A42DF91A93D506005B3447 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		84A42E121A93D506005B3447 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				84A42E171A93D506005B3447 /* XCTest.framework in Frameworks */,
+				84A42E1A1A93D506005B3447 /* CoreData.framework in Frameworks */,
+				84A42E191A93D506005B3447 /* UIKit.framework in Frameworks */,
+				84A42E181A93D506005B3447 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		84A42DEC1A93D506005B3447 = {
+			isa = PBXGroup;
+			children = (
+				84A42E001A93D506005B3447 /* SmartMap */,
+				84A42E1D1A93D506005B3447 /* SmartMapTests */,
+				84A42DF71A93D506005B3447 /* Frameworks */,
+				84A42DF61A93D506005B3447 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		84A42DF61A93D506005B3447 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				84A42DF51A93D506005B3447 /* SmartMap.app */,
+				84A42E151A93D506005B3447 /* SmartMapTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		84A42DF71A93D506005B3447 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				84A42E321A93D6E4005B3447 /* MapKit.framework */,
+				84A42DF81A93D506005B3447 /* Foundation.framework */,
+				84A42DFA1A93D506005B3447 /* CoreGraphics.framework */,
+				84A42DFC1A93D506005B3447 /* UIKit.framework */,
+				84A42DFE1A93D506005B3447 /* CoreData.framework */,
+				84A42E161A93D506005B3447 /* XCTest.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		84A42E001A93D506005B3447 /* SmartMap */ = {
+			isa = PBXGroup;
+			children = (
+				84A42E091A93D506005B3447 /* VRAppDelegate.h */,
+				84A42E0A1A93D506005B3447 /* VRAppDelegate.m */,
+				84A42E2D1A93D52A005B3447 /* Storyboard.storyboard */,
+				84A42E2F1A93D5C5005B3447 /* VRRootViewController.h */,
+				84A42E301A93D5C5005B3447 /* VRRootViewController.m */,
+				84A42E371A93F4E7005B3447 /* VRBookmarkList.h */,
+				84A42E381A93F4E7005B3447 /* VRBookmarkList.m */,
+				84A42E341A93DD50005B3447 /* VRAnnotationMap.h */,
+				84A42E351A93DD50005B3447 /* VRAnnotationMap.m */,
+				840AB99B1A970CC000EB3D9D /* VRBookmarkDetail.h */,
+				840AB99C1A970CC000EB3D9D /* VRBookmarkDetail.m */,
+				84A4C1FD1A9B159100ED2022 /* UIView+MKAnnotationView.h */,
+				84A4C1FE1A9B159100ED2022 /* UIView+MKAnnotationView.m */,
+				84A42E0F1A93D506005B3447 /* Images.xcassets */,
+				84A42E0C1A93D506005B3447 /* SmartMap.xcdatamodeld */,
+				84A59B001A94A45000BFBF48 /* BookmarkListEntity.h */,
+				84A59B011A94A45000BFBF48 /* BookmarkListEntity.m */,
+				84A42E011A93D506005B3447 /* Supporting Files */,
+			);
+			path = SmartMap;
+			sourceTree = "<group>";
+		};
+		84A42E011A93D506005B3447 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				84A42E021A93D506005B3447 /* SmartMap-Info.plist */,
+				84A42E031A93D506005B3447 /* InfoPlist.strings */,
+				84A42E061A93D506005B3447 /* main.m */,
+				84A42E081A93D506005B3447 /* SmartMap-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		84A42E1D1A93D506005B3447 /* SmartMapTests */ = {
+			isa = PBXGroup;
+			children = (
+				84A42E231A93D506005B3447 /* SmartMapTests.m */,
+				84A42E1E1A93D506005B3447 /* Supporting Files */,
+			);
+			path = SmartMapTests;
+			sourceTree = "<group>";
+		};
+		84A42E1E1A93D506005B3447 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				84A42E1F1A93D506005B3447 /* SmartMapTests-Info.plist */,
+				84A42E201A93D506005B3447 /* InfoPlist.strings */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		84A42DF41A93D506005B3447 /* SmartMap */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 84A42E271A93D506005B3447 /* Build configuration list for PBXNativeTarget "SmartMap" */;
+			buildPhases = (
+				84A42DF11A93D506005B3447 /* Sources */,
+				84A42DF21A93D506005B3447 /* Frameworks */,
+				84A42DF31A93D506005B3447 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = SmartMap;
+			productName = SmartMap;
+			productReference = 84A42DF51A93D506005B3447 /* SmartMap.app */;
+			productType = "com.apple.product-type.application";
+		};
+		84A42E141A93D506005B3447 /* SmartMapTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 84A42E2A1A93D506005B3447 /* Build configuration list for PBXNativeTarget "SmartMapTests" */;
+			buildPhases = (
+				84A42E111A93D506005B3447 /* Sources */,
+				84A42E121A93D506005B3447 /* Frameworks */,
+				84A42E131A93D506005B3447 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				84A42E1C1A93D506005B3447 /* PBXTargetDependency */,
+			);
+			name = SmartMapTests;
+			productName = SmartMapTests;
+			productReference = 84A42E151A93D506005B3447 /* SmartMapTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		84A42DED1A93D506005B3447 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				CLASSPREFIX = VR;
+				LastUpgradeCheck = 0500;
+				ORGANIZATIONNAME = "Rachenko Viacheslav";
+				TargetAttributes = {
+					84A42E141A93D506005B3447 = {
+						TestTargetID = 84A42DF41A93D506005B3447;
+					};
+				};
+			};
+			buildConfigurationList = 84A42DF01A93D506005B3447 /* Build configuration list for PBXProject "SmartMap" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 84A42DEC1A93D506005B3447;
+			productRefGroup = 84A42DF61A93D506005B3447 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				84A42DF41A93D506005B3447 /* SmartMap */,
+				84A42E141A93D506005B3447 /* SmartMapTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		84A42DF31A93D506005B3447 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				84A42E051A93D506005B3447 /* InfoPlist.strings in Resources */,
+				84A42E101A93D506005B3447 /* Images.xcassets in Resources */,
+				84A42E2E1A93D52A005B3447 /* Storyboard.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		84A42E131A93D506005B3447 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				84A42E221A93D506005B3447 /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		84A42DF11A93D506005B3447 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				84A42E311A93D5C5005B3447 /* VRRootViewController.m in Sources */,
+				84A42E0B1A93D506005B3447 /* VRAppDelegate.m in Sources */,
+				84A4C1FF1A9B159100ED2022 /* UIView+MKAnnotationView.m in Sources */,
+				84A42E361A93DD50005B3447 /* VRAnnotationMap.m in Sources */,
+				84A42E391A93F4E7005B3447 /* VRBookmarkList.m in Sources */,
+				84A42E071A93D506005B3447 /* main.m in Sources */,
+				84A42E0E1A93D506005B3447 /* SmartMap.xcdatamodeld in Sources */,
+				840AB99D1A970CC000EB3D9D /* VRBookmarkDetail.m in Sources */,
+				84A59B021A94A45000BFBF48 /* BookmarkListEntity.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		84A42E111A93D506005B3447 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				84A42E241A93D506005B3447 /* SmartMapTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		84A42E1C1A93D506005B3447 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 84A42DF41A93D506005B3447 /* SmartMap */;
+			targetProxy = 84A42E1B1A93D506005B3447 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		84A42E031A93D506005B3447 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				84A42E041A93D506005B3447 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		84A42E201A93D506005B3447 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				84A42E211A93D506005B3447 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		84A42E251A93D506005B3447 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = 2;
+			};
+			name = Debug;
+		};
+		84A42E261A93D506005B3447 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = 2;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		84A42E281A93D506005B3447 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "SmartMap/SmartMap-Prefix.pch";
+				INFOPLIST_FILE = "SmartMap/SmartMap-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		84A42E291A93D506005B3447 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "SmartMap/SmartMap-Prefix.pch";
+				INFOPLIST_FILE = "SmartMap/SmartMap-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+		84A42E2B1A93D506005B3447 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/SmartMap.app/SmartMap";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "SmartMap/SmartMap-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "SmartMapTests/SmartMapTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Debug;
+		};
+		84A42E2C1A93D506005B3447 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/SmartMap.app/SmartMap";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "SmartMap/SmartMap-Prefix.pch";
+				INFOPLIST_FILE = "SmartMapTests/SmartMapTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		84A42DF01A93D506005B3447 /* Build configuration list for PBXProject "SmartMap" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				84A42E251A93D506005B3447 /* Debug */,
+				84A42E261A93D506005B3447 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		84A42E271A93D506005B3447 /* Build configuration list for PBXNativeTarget "SmartMap" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				84A42E281A93D506005B3447 /* Debug */,
+				84A42E291A93D506005B3447 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		84A42E2A1A93D506005B3447 /* Build configuration list for PBXNativeTarget "SmartMapTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				84A42E2B1A93D506005B3447 /* Debug */,
+				84A42E2C1A93D506005B3447 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		84A42E0C1A93D506005B3447 /* SmartMap.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				84A42E0D1A93D506005B3447 /* SmartMap.xcdatamodel */,
+			);
+			currentVersion = 84A42E0D1A93D506005B3447 /* SmartMap.xcdatamodel */;
+			path = SmartMap.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = 84A42DED1A93D506005B3447 /* Project object */;
+}
