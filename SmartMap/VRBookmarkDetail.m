@@ -9,7 +9,11 @@
 #import "VRBookmarkDetail.h"
 #import "VRAppDelegate.h"
 #import <MapKit/MapKit.h>
+#import "VRServerManager.h"
+#import <MBProgressHUD.h>
 
+
+#define IS_OS_8_OR_LATER ([[[UIDevice currentDevice] systemVersion] floatValue] >= 8.0)
 @interface VRBookmarkDetail ()
 
 @end
@@ -24,6 +28,8 @@
   return self;
 }
 
+
+
 - (NSManagedObjectContext *)managedObjectContext {
   NSManagedObjectContext *context = nil;
   id delegate = [[UIApplication sharedApplication] delegate];
@@ -34,11 +40,6 @@
   return context;
 }
 
-/*
-
-
-
- */
 
 - (void)viewDidLoad {
   [super viewDidLoad];
@@ -53,36 +54,13 @@
 
   NSString *bookmarkName = [self.bookmarkItem valueForKey:@"name"];
 
-  bookmarkLatitude = [self.bookmarkItem valueForKey:@"latitute"];
-  bookmarkLongitude = [self.bookmarkItem valueForKey:@"longitude"];
-
-  NSLog(@"bookmarkName = %@", bookmarkName);
-  NSLog(@"bookmarkLatitude = %f", [bookmarkLatitude floatValue]);
-  NSLog(@"bookmarkLongitude = %@", bookmarkLongitude);
-
-  wikimapiaApiUrlString = [NSString
-      stringWithFormat:@"http://api.wikimapia.org/"
-                       @"?key=6FA30F2B-219E0764-EDA414C6-C3B4CC23-6C38B0A6-"
-                       @"F44C0548-660BAD77-A74810CA&function=place.search&lat="
-                       @"%f&lon=%f&format=json&language=ua&data_blocks=main,"
-                       @"location&page=&count=100&distance=1000",
-                       [bookmarkLatitude floatValue],
-                       [bookmarkLongitude floatValue]];
-
-  foursquareApiUrlString =
-      [NSString stringWithFormat:@"https://api.foursquare.com/v2/venues/"
-                                 @"search?ll=%f,%f&client_id="
-                                 @"1AJY13TTJRL1SNDUEDAR3LPEUAY2SJEHPIAR53VVKXN"
-                                 @"4W4NY&client_secret="
-                                 @"DTMO0DCZWV3I3ILWGTMUAUPBNFAVWWA3Q4PJE0ZIAVB"
-                                 @"TJNHP&v=20150101",
-                                 [bookmarkLatitude floatValue],
-                                 [bookmarkLongitude floatValue]];
+  
 
   if ([bookmarkName isEqualToString:@"unnamedPin"]) {
-    dispatch_async(dispatch_get_main_queue(), ^{
-      [self createRequest:foursquareApiUrlString];
-    });
+
+      
+      [self createRequest:@"foursquare"];
+ 
   }
     
   [dataSourseDictionary addObject:[self.bookmarkItem valueForKey:@"name" ]];
@@ -115,14 +93,80 @@
     [dataSourseDictionary removeAllObjects];
     [categoriesArray removeAllObjects];
     
-  UIActionSheet *requestSelector = [[UIActionSheet alloc]
-               initWithTitle:nil
-                    delegate:self
-           cancelButtonTitle:nil
-      destructiveButtonTitle:@"Cancel"
-           otherButtonTitles:@"Foursquare", @"Wikimapia.org", nil];
+    if(IS_OS_8_OR_LATER) {
+        
+        
+        
+        UIAlertController *alertController = [UIAlertController
+                                              alertControllerWithTitle:nil
+                                              message:nil
+                                              preferredStyle:UIAlertControllerStyleActionSheet];
+        
+        UIAlertAction* foursquare = [UIAlertAction
+                             actionWithTitle:@"foursquare"
+                             style:UIAlertActionStyleDefault
+                             handler:^(UIAlertAction * action)
+                             {
+                                 searchNearbyPlace.enabled = NO;
+                                 
+                                 searchNearbyPlace.width = 0.0f;
+                                 searchNearbyPlace.tintColor = [UIColor clearColor];
+                                 searchNearbyPlace = nil;
+                                 
+                                 [self createRequest:@"foursquare"];
+                                 [alertController dismissViewControllerAnimated:YES completion:nil];
+                                 
+                             }];
+        UIAlertAction* wikimapia = [UIAlertAction
+                                 actionWithTitle:@"Wikimapia.org"
+                                 style:UIAlertActionStyleDefault
+                                 handler:^(UIAlertAction * action)
+                                 {
+                                     searchNearbyPlace.enabled = NO;
+                                     
+                                     searchNearbyPlace.width = 0.0f;
+                                     searchNearbyPlace.tintColor = [UIColor clearColor];
+                                     searchNearbyPlace = nil;
+                                     
+                                     [self createRequest:@"wikimapia"];
+                                     [alertController dismissViewControllerAnimated:YES completion:nil];
+                                     
+                                 }];
+        
+        
+        [alertController addAction:foursquare];
+        [alertController addAction:wikimapia];
+        
+        if (UI_USER_INTERFACE_IDIOM()== UIUserInterfaceIdiomPad) {
+            [alertController.popoverPresentationController setPermittedArrowDirections:0];
+            NSLog(@"UIUserInterfaceIdiomPad" );
+            
+            
+            //For set action sheet to middle of view.
+            CGRect rect = self.view.frame;
+            rect.origin.x = self.view.frame.size.width / 20;
+            rect.origin.y = self.view.frame.size.height / 20;
+            alertController.popoverPresentationController.sourceView = self.view;
+            alertController.popoverPresentationController.sourceRect = rect;
+            
+            [self presentViewController:alertController animated:YES completion:nil];
+        }
+        
+        else {
+        [self presentViewController:alertController animated:YES completion:nil];
+        }
+    }
+    else {
+        UIActionSheet *requestSelector = [[UIActionSheet alloc]
+                                          initWithTitle:nil
+                                          delegate:self
+                                          cancelButtonTitle:nil
+                                          destructiveButtonTitle:@"Cancel"
+                                          otherButtonTitles:@"Foursquare", @"Wikimapia.org", nil];
+        
+        [requestSelector showInView:self.view];
+    }
 
-  [requestSelector showInView:self.view];
    
 }
 
@@ -186,167 +230,211 @@ self.navigationItem.title = bookmarkNewName;
   else {
     cell.userInteractionEnabled = YES;
     cell.textLabel.text = dataSourseDictionary[indexPath.row];
-    cell.detailTextLabel.text = categoriesArray[indexPath.row];
-    //  [self.tableView reloadData];
-    // Configure the cell...
+
   }
   return cell;
 }
 
+#pragma mark - NetWork
+
 - (void)createRequest:(NSString *)apiStringURL {
-   
-  [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
+    bookmarkLatitude = [self.bookmarkItem valueForKey:@"latitute"];
+    bookmarkLongitude = [self.bookmarkItem valueForKey:@"longitude"];
 
-  NSURL *url = [NSURL URLWithString:apiStringURL];
-
-  NSURLSessionConfiguration *config =
-      [NSURLSessionConfiguration defaultSessionConfiguration];
-  NSURLSession *session = [NSURLSession sessionWithConfiguration:config];
-
-  NSURLRequest *request = [[NSURLRequest alloc] initWithURL:url];
-
-  NSURLSessionDataTask *dataTask = [session
-      dataTaskWithRequest:request
-        completionHandler:^(NSData *data, NSURLResponse *response,
-                            NSError *error) {
-
-          if (!response) {
-            NSLog(@"\n------------\nerror = %@", [error localizedDescription]);
-            [UIApplication sharedApplication].networkActivityIndicatorVisible =
-                NO;
-            dispatch_sync(dispatch_get_main_queue(), ^{
-
-              UIAlertView *alertError = [[UIAlertView alloc]
-                      initWithTitle:@"Error"
-                            message:[error localizedDescription]
-                           delegate:self
-                  cancelButtonTitle:@"Cansel"
-                  otherButtonTitles:@"Repeat", nil];
-
-              [alertError show];
-
-            });
-
-          } else {
-            [self processResponseUsingData:data];
-            NSLog(@"resposne type %@", response.MIMEType);
-            // NSLog(@"response list %@", data);
-          }
-          //   [self processResponseUsingData:data];
+    if ([apiStringURL isEqualToString:@"foursquare"]) {
+        
+        
+        foursquareApiUrlString =
+        [NSString stringWithFormat:@"https://api.foursquare.com/v2/venues/"
+         @"search?ll=%f,%f&client_id="
+         @"1AJY13TTJRL1SNDUEDAR3LPEUAY2SJEHPIAR53VVKXN"
+         @"4W4NY&client_secret="
+         @"DTMO0DCZWV3I3ILWGTMUAUPBNFAVWWA3Q4PJE0ZIAVB"
+         @"TJNHP&v=20150101",
+         [bookmarkLatitude floatValue],
+         [bookmarkLongitude floatValue]];
+        
+        [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
+        
+        
+        MBProgressHUD *hud =[MBProgressHUD showHUDAddedTo:self.tableView animated:YES];
+        hud.mode = MBProgressHUDModeIndeterminate;
+        hud.labelText = @"Loading";
+        
+        
+        
+        [[VRServerManager sharedManager]getNearbyPlaceUsedFoursquareAPIFromURL:foursquareApiUrlString onSuccess:^(NSArray *nearbyPlaceNameArray) {
+            
+            [dataSourseDictionary removeAllObjects];
+            [dataSourseDictionary addObjectsFromArray:nearbyPlaceNameArray];
+            [hud hide:YES];
+            if (dataSourseDictionary.count==0) {
+                UIAlertView *alertView = [[UIAlertView alloc]initWithTitle:@"Title"
+                                                                   message:@"message"
+                                                                  delegate:self
+                                                         cancelButtonTitle:@"Close"
+                                                         otherButtonTitles:@"Use wikimapia", nil];
+                
+                [alertView show];
+            }
+            [self.tableView reloadData];
+        } onFailure:^(NSError *error, NSInteger statusCode) {
+            NSLog(@"error code %i", statusCode );
         }];
 
-  [dataTask resume];
+    }
+    
+    else if ([apiStringURL isEqualToString:@"wikimapia"])
+    {
+    
+        MBProgressHUD *hud =[MBProgressHUD showHUDAddedTo:self.tableView animated:YES];
+        hud.mode = MBProgressHUDModeIndeterminate;
+        hud.labelText = @"Loading";
+        
+    wikimapiaApiUrlString = [NSString
+                             stringWithFormat:@"http://api.wikimapia.org/"
+                             @"?key=6FA30F2B-219E0764-EDA414C6-C3B4CC23-6C38B0A6-"
+                             @"F44C0548-660BAD77-A74810CA&function=place.search&lat="
+                             @"%f&lon=%f&format=json&language=ua&data_blocks=main,"
+                             @"location&page=&count=100&distance=1000",
+                             [bookmarkLatitude floatValue],
+                             [bookmarkLongitude floatValue]];
+    
+    
+    [[VRServerManager sharedManager]getNearbyPlaceUsedWikimapiaAPIFromURL:wikimapiaApiUrlString
+                                                                onSuccess:^(NSArray *nearbyPlaceNameArray) {
+        [dataSourseDictionary removeAllObjects];
+            [hud hide:YES];
+    if (nearbyPlaceNameArray.count==0) {
+        UIAlertView *alertView = [[UIAlertView alloc]initWithTitle:@"Wikimapia"
+                                                           message:@"notFound"
+                                                          delegate:self
+                                                 cancelButtonTitle:@"showPlaceInfo"
+                                                 otherButtonTitles:@"OK", nil];
+        
+        [alertView show];
+                                                                    }
+                                                                    
+        [dataSourseDictionary addObjectsFromArray:nearbyPlaceNameArray];
+                                                                    
+                                                                  
+                                                                    
+        [self.tableView reloadData];
+    } onFailure:^(NSError *error, NSInteger statusCode) {
+        NSLog(@"error code %i", statusCode );
+        NSLog(@"error description = %@", error.description );
+    }];
+    }
+    
+  
+
 }
 
-- (void)processResponseUsingData:(NSData *)data {
-  NSError *parseJsonError = nil;
-  NSLog(@"processResponseUsingData");
-  NSDictionary *jsonDict =
-      [NSJSONSerialization JSONObjectWithData:data
-                                      options:NSJSONReadingMutableContainers
-                                        error:&parseJsonError];
 
-  if (!parseJsonError) {
-
-    NSArray *responseKey = [jsonDict allKeys];
-
-    if ([responseKey containsObject:@"places"]) {
-      dispatch_async(
-          dispatch_get_main_queue(), ^{
-
-            NSArray *placesDictionary = [jsonDict objectForKey:@"places"];
-            NSLog(@"placesDictionary count = %i", [placesDictionary count]);
-            NSInteger placesDictionaryCount = [placesDictionary count];
-
-            if (placesDictionaryCount == 0) {
-             
-             
-              [self showAllertWithTitle:@"Not found"
-                             andMessage:@"В базе wikimapia.org  нету "
-                                        @"информации об этом месте."
-                    andOtherButtonTitle:@"showPlaceInfo"];
-
-            } else {
-              for (int i = 0; i < placesDictionaryCount; i++) {
-                  [dataSourseDictionary removeAllObjects];
-                  [categoriesArray removeAllObjects];
+- (void)getPlaceInfoWithGeocoder {
+    
+    [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
+    
+    MBProgressHUD *hud =[MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    hud.mode = MBProgressHUDModeIndeterminate;
+    hud.labelText = @"Loading";
+    
+    [dataSourseDictionary removeAllObjects];
+    [categoriesArray removeAllObjects];
+    
+    CLGeocoder *ceo = [[CLGeocoder alloc] init];
+    
+    CLLocation *loc =
+    [[CLLocation alloc] initWithLatitude:[bookmarkLatitude floatValue]
+                               longitude:[bookmarkLongitude floatValue]];
+    
+    [ceo reverseGeocodeLocation:loc
+              completionHandler:^(NSArray *placemarks, NSError *error) {
+                  CLPlacemark *placemark = [placemarks objectAtIndex:0];
+                  NSLog(@"placemark %@", placemark);
+                  // String to hold address
+                  NSString *locatedAt = [[placemark.addressDictionary
+                                          valueForKey:@"FormattedAddressLines"]
+                                         componentsJoinedByString:@", "];
+                  NSLog(@"addressDictionary %@", placemark.addressDictionary);
+                  NSLog(@"addressDictionary %@", locatedAt);
                   
-                NSDictionary *objectDict = placesDictionary[i];
-                NSArray *tags = objectDict[@"tags"];
-                NSDictionary *categoryDict = tags[0];
-                if (objectDict[@"title"] != nil) {
-                  NSString *titleString = objectDict[@"title"];
-                  NSLog(@"title[%i] = %@", i, titleString);
-                  [dataSourseDictionary addObject:titleString];
-                }
-
-                NSString *categoryString = categoryDict[@"title"];
-
-                [categoriesArray addObject:categoryString];
+                  NSString *titleStr =
+                  [NSString stringWithFormat:@"%@  ", locatedAt];
+                  [dataSourseDictionary addObject:titleStr];
+                  [categoriesArray addObject:[placemark.addressDictionary
+                                              valueForKey:@"Country"]];
+                  [UIApplication sharedApplication]
+                  .networkActivityIndicatorVisible = NO;
+                  [hud hide:YES];
+                  [self.tableView reloadData];
+                  
               }
-              [self.tableView reloadData];
-            }
-          });
-    }
-
-    else if ([responseKey containsObject:@"response"]) {
-
-      dispatch_async(dispatch_get_main_queue(),
-                     ^{
-
-                       NSDictionary *responseDictionary =
-                           [jsonDict objectForKey:@"response"];
-
-                       NSInteger responseDataCount =
-                           [responseDictionary[@"venues"] count];
-                       if (responseDataCount == 0) {
-
-                         [self showAllertWithTitle:@"Not found"
-                                        andMessage:
-                                            @"В базе forsquare нету "
-                                            @"информации об этом месте. "
-                                            @"Попытаться найти информацию об "
-                                            @"этом месте используя сервис "
-                                            @"wikimapia.org?"
-                               andOtherButtonTitle:@"Use wikimapia"];
-
-                       }
-
-                       else {
-                           [dataSourseDictionary removeAllObjects];
-                           [categoriesArray removeAllObjects];
-                           
-                         for (int index = 0; index < responseDataCount;
-                              index++) {
-                           NSDictionary *dict =
-                               responseDictionary[@"venues"][index];
-                           NSDictionary *locationDict = dict[@"location"];
-
-                           NSLog(@"index = %i", index);
-                           NSLog(@"lat = %@, lng = %@", locationDict[@"lat"],
-                                 locationDict[@"lng"]);
-
-                           NSString *string =
-                               [NSString stringWithFormat:@"lat = %@, lng = %@",
-                                                          locationDict[@"lat"],
-                                                          locationDict[@"lng"]];
-
-                           [dataSourseDictionary addObject:dict[@"name"]];
-
-                           [categoriesArray addObject:string];
-                         }
-                         [self.tableView reloadData];
-                       }
-                     });
-    }
-  }
+     
+     ];
 }
+
 
 #pragma mark - Alert
+
+
+
+
+
 
 - (void)showAllertWithTitle:(NSString *)title
                  andMessage:(NSString *)message
         andOtherButtonTitle:(NSString *)otherButtonTitle {
+    
+    if(IS_OS_8_OR_LATER) {
+    
+    
+        
+        UIAlertController *alertController = [UIAlertController
+                                              alertControllerWithTitle:title
+                                              message:message
+                                              preferredStyle:UIAlertControllerStyleAlert];
+        UIAlertAction* ok = [UIAlertAction
+                             actionWithTitle:otherButtonTitle
+                             style:UIAlertActionStyleDefault
+                             handler:^(UIAlertAction * action)
+                             {
+                                 
+                                 
+                                 if ([action.title isEqualToString:@"Use wikimapia"]) {
+                                     [self createRequest:@"wikimapia"];
+                                 } else if ([action.title
+                                             isEqualToString:@"Repeat"]) {
+                                     [self createRequest:foursquareApiUrlString];
+                                 } else if ([action.title
+                                             isEqualToString:@"showPlaceInfo"]) {
+                                     [self getPlaceInfoWithGeocoder];
+                                 } else if ([action.title
+                                             isEqualToString:@"Закрыть"]) {
+                                     [self.navigationController popToRootViewControllerAnimated:YES];
+                                 }
+
+                                 
+                                 
+                                 [alertController dismissViewControllerAnimated:YES completion:nil];
+                                 
+                             }];
+        UIAlertAction* cancel = [UIAlertAction
+                                 actionWithTitle:@"Cancel"
+                                 style:UIAlertActionStyleDefault
+                                 handler:^(UIAlertAction * action)
+                                 {
+                                     [alertController dismissViewControllerAnimated:YES completion:nil];
+                                     
+                                 }];
+        
+        [alertController addAction:ok];
+        [alertController addAction:cancel];
+        
+        [self presentViewController:alertController animated:YES completion:nil];
+    
+    }
+    
   UIAlertView *alert =
       [[UIAlertView alloc] initWithTitle:title
                                  message:message
@@ -360,7 +448,7 @@ self.navigationItem.title = bookmarkNewName;
 - (void)alertView:(UIAlertView *)alertView
     clickedButtonAtIndex:(NSInteger)buttonIndex {
   if ([[alertView buttonTitleAtIndex:buttonIndex] isEqualToString:@"Use wikimapia"]) {
-    [self createRequest:wikimapiaApiUrlString];
+    [self createRequest:@"wikimapia"];
   } else if ([[alertView buttonTitleAtIndex:buttonIndex]
                  isEqualToString:@"Repeat"]) {
     [self createRequest:foursquareApiUrlString];
@@ -393,7 +481,8 @@ self.navigationItem.title = bookmarkNewName;
       searchNearbyPlace.tintColor = [UIColor clearColor];
       searchNearbyPlace = nil;
       
-    [self createRequest:foursquareApiUrlString];
+    [self createRequest:@"foursquare"];
+      
   } else if ([[actionSheet buttonTitleAtIndex:buttonIndex]
                  isEqualToString:@"Wikimapia.org"]) {
       
@@ -403,9 +492,12 @@ self.navigationItem.title = bookmarkNewName;
       searchNearbyPlace.tintColor = [UIColor clearColor];
       searchNearbyPlace = nil;
       
-    [self createRequest:wikimapiaApiUrlString];
+    [self createRequest:@"wikimapia"];
   }
 }
+
+
+#pragma mark - Action
 
 - (void)renameBookMark {
 
@@ -446,41 +538,5 @@ self.navigationItem.title = bookmarkNewName;
 
 }
 
-- (void)getPlaceInfoWithGeocoder {
 
-  [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
-    
-    [dataSourseDictionary removeAllObjects];
-    [categoriesArray removeAllObjects];
-    
-  CLGeocoder *ceo = [[CLGeocoder alloc] init];
-
-  CLLocation *loc =
-      [[CLLocation alloc] initWithLatitude:[bookmarkLatitude floatValue]
-                                 longitude:[bookmarkLongitude floatValue]];
-
-  [ceo reverseGeocodeLocation:loc
-            completionHandler:^(NSArray *placemarks, NSError *error) {
-              CLPlacemark *placemark = [placemarks objectAtIndex:0];
-              NSLog(@"placemark %@", placemark);
-              // String to hold address
-              NSString *locatedAt = [[placemark.addressDictionary
-                  valueForKey:@"FormattedAddressLines"]
-                  componentsJoinedByString:@", "];
-              NSLog(@"addressDictionary %@", placemark.addressDictionary);
-              NSLog(@"addressDictionary %@", locatedAt);
-
-              NSString *titleStr =
-                  [NSString stringWithFormat:@"%@  ", locatedAt];
-              [dataSourseDictionary addObject:titleStr];
-              [categoriesArray addObject:[placemark.addressDictionary
-                                             valueForKey:@"Country"]];
-              [UIApplication sharedApplication]
-                  .networkActivityIndicatorVisible = NO;
-              [self.tableView reloadData];
-
-            }
-
-  ];
-}
 @end

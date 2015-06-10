@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>DAE369BA-860C-42D9-BBFB-2845AD890DD1</string>
+	<key>IDESourceControlProjectName</key>
+	<string>SmartMap</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>278933E7A41092637B20C129B0847BC37FC5B28B</key>
+		<string>https://github.com/RachenkoViacheslav/SmartMap.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>SmartMap.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>278933E7A41092637B20C129B0847BC37FC5B28B</key>
+		<string>..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/RachenkoViacheslav/SmartMap.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>111</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>278933E7A41092637B20C129B0847BC37FC5B28B</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>278933E7A41092637B20C129B0847BC37FC5B28B</string>
+			<key>IDESourceControlWCCName</key>
+			<string>SmartMap</string>
+		</dict>
+	</array>
+</dict>
+</plist>

@@ -30,6 +30,9 @@
 		84A42E391A93F4E7005B3447 /* VRBookmarkList.m in Sources */ = {isa = PBXBuildFile; fileRef = 84A42E381A93F4E7005B3447 /* VRBookmarkList.m */; };
 		84A4C1FF1A9B159100ED2022 /* UIView+MKAnnotationView.m in Sources */ = {isa = PBXBuildFile; fileRef = 84A4C1FE1A9B159100ED2022 /* UIView+MKAnnotationView.m */; };
 		84A59B021A94A45000BFBF48 /* BookmarkListEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 84A59B011A94A45000BFBF48 /* BookmarkListEntity.m */; };
+		84AA59261AE0F7AB00CA989F /* VRServerManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 84AA59251AE0F7AB00CA989F /* VRServerManager.m */; };
+		84B32B611AE1B796008539F3 /* IphoneStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84B32B601AE1B796008539F3 /* IphoneStoryboard.storyboard */; };
+		D641B1D40FD2EF943B24B9A4 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5AC56AE057356EBBFA81A126 /* libPods.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -43,8 +46,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		063158CDB357A43BA5E4FB7D /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
+		5AC56AE057356EBBFA81A126 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		7F9FB23F707A8B1F19942036 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		840AB99B1A970CC000EB3D9D /* VRBookmarkDetail.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VRBookmarkDetail.h; sourceTree = "<group>"; };
-		840AB99C1A970CC000EB3D9D /* VRBookmarkDetail.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VRBookmarkDetail.m; sourceTree = "<group>"; };
+		840AB99C1A970CC000EB3D9D /* VRBookmarkDetail.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VRBookmarkDetail.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.metal; };
 		84A42DF51A93D506005B3447 /* SmartMap.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SmartMap.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		84A42DF81A93D506005B3447 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		84A42DFA1A93D506005B3447 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -75,6 +81,9 @@
 		84A4C1FE1A9B159100ED2022 /* UIView+MKAnnotationView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+MKAnnotationView.m"; sourceTree = "<group>"; };
 		84A59B001A94A45000BFBF48 /* BookmarkListEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BookmarkListEntity.h; sourceTree = "<group>"; };
 		84A59B011A94A45000BFBF48 /* BookmarkListEntity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BookmarkListEntity.m; sourceTree = "<group>"; };
+		84AA59241AE0F7AB00CA989F /* VRServerManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VRServerManager.h; sourceTree = "<group>"; };
+		84AA59251AE0F7AB00CA989F /* VRServerManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VRServerManager.m; sourceTree = "<group>"; };
+		84B32B601AE1B796008539F3 /* IphoneStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = IphoneStoryboard.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -87,6 +96,7 @@
 				84A42DFF1A93D506005B3447 /* CoreData.framework in Frameworks */,
 				84A42DFD1A93D506005B3447 /* UIKit.framework in Frameworks */,
 				84A42DF91A93D506005B3447 /* Foundation.framework in Frameworks */,
+				D641B1D40FD2EF943B24B9A4 /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -104,6 +114,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		6E7ED98236C293D67B37D585 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				7F9FB23F707A8B1F19942036 /* Pods.debug.xcconfig */,
+				063158CDB357A43BA5E4FB7D /* Pods.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		84A42DEC1A93D506005B3447 = {
 			isa = PBXGroup;
 			children = (
@@ -111,6 +130,7 @@
 				84A42E1D1A93D506005B3447 /* SmartMapTests */,
 				84A42DF71A93D506005B3447 /* Frameworks */,
 				84A42DF61A93D506005B3447 /* Products */,
+				6E7ED98236C293D67B37D585 /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -132,6 +152,7 @@
 				84A42DFC1A93D506005B3447 /* UIKit.framework */,
 				84A42DFE1A93D506005B3447 /* CoreData.framework */,
 				84A42E161A93D506005B3447 /* XCTest.framework */,
+				5AC56AE057356EBBFA81A126 /* libPods.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -142,6 +163,7 @@
 				84A42E091A93D506005B3447 /* VRAppDelegate.h */,
 				84A42E0A1A93D506005B3447 /* VRAppDelegate.m */,
 				84A42E2D1A93D52A005B3447 /* Storyboard.storyboard */,
+				84B32B601AE1B796008539F3 /* IphoneStoryboard.storyboard */,
 				84A42E2F1A93D5C5005B3447 /* VRRootViewController.h */,
 				84A42E301A93D5C5005B3447 /* VRRootViewController.m */,
 				84A42E371A93F4E7005B3447 /* VRBookmarkList.h */,
@@ -150,6 +172,8 @@
 				84A42E351A93DD50005B3447 /* VRAnnotationMap.m */,
 				840AB99B1A970CC000EB3D9D /* VRBookmarkDetail.h */,
 				840AB99C1A970CC000EB3D9D /* VRBookmarkDetail.m */,
+				84AA59241AE0F7AB00CA989F /* VRServerManager.h */,
+				84AA59251AE0F7AB00CA989F /* VRServerManager.m */,
 				84A4C1FD1A9B159100ED2022 /* UIView+MKAnnotationView.h */,
 				84A4C1FE1A9B159100ED2022 /* UIView+MKAnnotationView.m */,
 				84A42E0F1A93D506005B3447 /* Images.xcassets */,
@@ -197,9 +221,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 84A42E271A93D506005B3447 /* Build configuration list for PBXNativeTarget "SmartMap" */;
 			buildPhases = (
+				8D2EE4119496B5D5BAA81968 /* Check Pods Manifest.lock */,
 				84A42DF11A93D506005B3447 /* Sources */,
 				84A42DF21A93D506005B3447 /* Frameworks */,
 				84A42DF31A93D506005B3447 /* Resources */,
+				D43934931D4EA856358C012C /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -235,7 +261,7 @@
 			isa = PBXProject;
 			attributes = {
 				CLASSPREFIX = VR;
-				LastUpgradeCheck = 0500;
+				LastUpgradeCheck = 0600;
 				ORGANIZATIONNAME = "Rachenko Viacheslav";
 				TargetAttributes = {
 					84A42E141A93D506005B3447 = {
@@ -268,6 +294,7 @@
 			files = (
 				84A42E051A93D506005B3447 /* InfoPlist.strings in Resources */,
 				84A42E101A93D506005B3447 /* Images.xcassets in Resources */,
+				84B32B611AE1B796008539F3 /* IphoneStoryboard.storyboard in Resources */,
 				84A42E2E1A93D52A005B3447 /* Storyboard.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -282,6 +309,39 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		8D2EE4119496B5D5BAA81968 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		D43934931D4EA856358C012C /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		84A42DF11A93D506005B3447 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -295,6 +355,7 @@
 				84A42E071A93D506005B3447 /* main.m in Sources */,
 				84A42E0E1A93D506005B3447 /* SmartMap.xcdatamodeld in Sources */,
 				840AB99D1A970CC000EB3D9D /* VRBookmarkDetail.m in Sources */,
+				84AA59261AE0F7AB00CA989F /* VRServerManager.m in Sources */,
 				84A59B021A94A45000BFBF48 /* BookmarkListEntity.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -341,7 +402,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
@@ -381,7 +441,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
@@ -413,26 +472,32 @@
 		};
 		84A42E281A93D506005B3447 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7F9FB23F707A8B1F19942036 /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "SmartMap/SmartMap-Prefix.pch";
 				INFOPLIST_FILE = "SmartMap/SmartMap-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
 		};
 		84A42E291A93D506005B3447 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 063158CDB357A43BA5E4FB7D /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "SmartMap/SmartMap-Prefix.pch";
 				INFOPLIST_FILE = "SmartMap/SmartMap-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
@@ -440,7 +505,6 @@
 		84A42E2B1A93D506005B3447 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
 				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/SmartMap.app/SmartMap";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
@@ -463,7 +527,6 @@
 		84A42E2C1A93D506005B3447 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
 				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/SmartMap.app/SmartMap";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",

@@ -12,6 +12,11 @@
 #import "VRBookmarkList.h"
 #import "VRBookmarkDetail.h"
 #import "UIView+MKAnnotationView.h"
+#import <WYPopoverController.h>
+#import <MBProgressHUD.h>
+
+#define IS_OS_8_OR_LATER ([[[UIDevice currentDevice] systemVersion] floatValue] >= 8.0)
+
 
 
 @interface VRRootViewController () {
@@ -25,7 +30,10 @@
 
 @property (strong, nonatomic) UILongPressGestureRecognizer *longPressGesture;
 @property (strong, nonatomic) UIPopoverController* popover;
+@property (strong, nonatomic) WYPopoverController* wyPopover;
 @property (strong, nonatomic) MKDirections * directions;
+@property (strong, nonatomic) CLLocationManager *locationManager;
+@property (strong, nonatomic) MBProgressHUD *hud;
 
 @end
 
@@ -43,9 +51,24 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    self.mapViewOutlet.delegate = self;
+    self.locationManager = [[CLLocationManager alloc] init];
+    self.locationManager.delegate = self;
+#ifdef __IPHONE_8_0
+    if(IS_OS_8_OR_LATER) {
+        // Use one or the other, not both. Depending on what you put in info.plist
+        [self.locationManager requestWhenInUseAuthorization];
+        [self.locationManager requestAlwaysAuthorization];
+    }
+#endif
+    [self.locationManager startUpdatingLocation];
     
+    self.mapViewOutlet.showsUserLocation = YES;
+    [self.mapViewOutlet setMapType:MKMapTypeStandard];
+    [self.mapViewOutlet setZoomEnabled:YES];
+    [self.mapViewOutlet setScrollEnabled:YES];
 	// Do any additional setup after loading the view.
-    [self viewAllSavedPin];
+       [self viewAllSavedPin];
     [self longPressGestureRecognizer];
 }
 
@@ -64,10 +87,36 @@
     // Dispose of any resources that can be recreated.
 }
 
--(void)dealloc {
+-(void)myDealloc {
+    
+    
     if ([self.directions isCalculating]) {
         [self.directions cancel];
+        
+        
     }
+    [self.drawRouteButtonOutlet setTitle:@"Route"];
+    [self.mapViewOutlet removeOverlays:[self.mapViewOutlet overlays]];
+    [self.mapViewOutlet removeAnnotations:[self.mapViewOutlet annotations]];
+    
+    [self viewAllSavedPin];
+    
+    
+}
+
+
+-(void)dealloc {
+    NSLog(@"dealloc ");
+    if ([self.directions isCalculating]) {
+        [self.directions cancel];
+        
+  
+    }
+    [self.drawRouteButtonOutlet setTitle:@"Route"];
+    [self.mapViewOutlet removeOverlays:[self.mapViewOutlet overlays]];
+    [self.mapViewOutlet removeAnnotations:[self.mapViewOutlet annotations]];
+    
+    [self viewAllSavedPin];
     
 }
 
@@ -187,8 +236,9 @@
         NSLog(@"Rootview controller bookmarks %@", self.bookmarksMutableArray);
         bookmarkListController.bookmarksArray = self.bookmarksMutableArray;
         bookmarkListController.enableSegue = YES;
+  
         
-
+        [self myDealloc];
         
     }
     
@@ -337,19 +387,18 @@ CLLocationCoordinate2D location = annotation.coordinate;
     
     
     [self.directions calculateDirectionsWithCompletionHandler:^(MKDirectionsResponse *response, NSError *error) {
+        NSLog(@"start direction "  );
+        
         if (error) {
-         
-        UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"Error" message:[error localizedDescription] delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
-            [alert show];
-            
-            
-            
-            NSLog(@"error %@", [error localizedDescription]);
-        }
+            [self.hud hide:YES];
+            [self showAlertWithTitle:@"Error" andMessege:[error localizedDescription]];
+                    }
+        
+        
         else if ([response.routes count]==0) {
-            UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"Error" message:@"round not found" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
-            [alert show];
-        }
+            [self.hud hide:YES];
+            [self showAlertWithTitle:@"Error" andMessege:@"round not found"];
+                    }
         
         else {
             self.mapViewOutlet.delegate = self;
@@ -384,7 +433,9 @@ CLLocationCoordinate2D location = annotation.coordinate;
         
         renderer.lineWidth = 2.f;
         renderer.strokeColor = [UIColor blackColor];
+        NSLog(@"End direction" );
         
+        [self.hud hide:YES];
         return renderer;
     }
     return  nil;
@@ -409,13 +460,20 @@ CLLocationCoordinate2D location = annotation.coordinate;
             self.popover = [[UIPopoverController alloc] initWithContentViewController:bookmarkListController];
             
             
-            [self.popover presentPopoverFromBarButtonItem:sender         permittedArrowDirections:UIPopoverArrowDirectionAny
+            [self.popover presentPopoverFromBarButtonItem:sender
+                                 permittedArrowDirections:UIPopoverArrowDirectionAny
                                                  animated:YES];
             
             bookmarkListController.preferredContentSize = CGSizeMake(500, 750);
         }
         else {
             NSLog(@"iphone");
+            self.wyPopover = [[WYPopoverController alloc]initWithContentViewController:bookmarkListController];
+            
+            [self.wyPopover presentPopoverFromBarButtonItem:sender
+                                   permittedArrowDirections:WYPopoverArrowDirectionAny
+                                                   animated:YES];
+            
         }
 
         
@@ -438,17 +496,53 @@ CLLocationCoordinate2D location = annotation.coordinate;
 - (IBAction)testButton:(id)sender {
     
      [self performSegueWithIdentifier:@"ShowBookmarksList" sender:nil];
-    
-    //[self actionDirection];
+
 }
 
 -(void)selectedBookmarkCoordinateLatitute:(NSString *)latitute andLongitude:(NSString *)longitude {
+    if (UI_USER_INTERFACE_IDIOM()== UIUserInterfaceIdiomPad) {
     [self.popover dismissPopoverAnimated:YES];
     self.popover = nil;
-    
+    }
+    else {
+        [self.wyPopover dismissPopoverAnimated:YES];
+        self.wyPopover = nil;
+    }
     selectBookmarkLatitute = [latitute floatValue];
     selectBookmarkLongitude= [longitude floatValue];
+    
+    self.hud =[MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    self.hud.mode = MBProgressHUDModeIndeterminate;
+    self.hud.labelText = @"Please wait";
+    
+    
     NSLog(@"\n---------\n selectBookmarkLatitute = %f\n selectBookmarkLongitude  %f", selectBookmarkLatitute, selectBookmarkLongitude);
     [self actionDirection];
 }
+
+#pragma mark - AlertView 
+
+-(void)showAlertWithTitle:(NSString*)title andMessege:(NSString*)message  {
+    
+    
+    if(IS_OS_8_OR_LATER) {
+        
+        UIAlertController *alertController = [UIAlertController
+                                              alertControllerWithTitle:title
+                                              message:message
+                                              preferredStyle:UIAlertControllerStyleAlert];
+        
+        [self presentViewController:alertController animated:YES completion:nil];
+        
+    }
+    else {
+        
+        UIAlertView *alert = [[UIAlertView alloc]initWithTitle:title message:message delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+        [alert show];
+    }
+
+    
+    
+}
+
 @end

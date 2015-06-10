@@ -12,7 +12,7 @@
 
 
 
-@interface VRRootViewController : UIViewController <MKMapViewDelegate, selectedCell> {
+@interface VRRootViewController : UIViewController <MKMapViewDelegate, selectedCell, CLLocationManagerDelegate> {
     
     NSMutableArray* indexArray;
     NSInteger selectedBookmarkIndex;
